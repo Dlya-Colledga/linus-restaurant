@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ru">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
+  <meta content="#090a09" name="theme-color"/>
+  <title>
+   LINUS &mdash; &Vcy;&acy;&shcy; &zcy;&acy;&kcy;&acy;&zcy;
+  </title>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+  <link href="assets/css/order.css" rel="stylesheet"/>
+  <link href="assets/css/shared.css" rel="stylesheet"/>
+ </head>
+ <body data-page="order">
+  <div class="app" id="app">
+   <header class="topbar">
+    <a class="brand" href="index.html">
+     LINUS
+    </a>
+    <div class="topbar-right">
+     <span class="branch" data-i18n="&Fcy;&icy;&lcy;&icy;&acy;&lcy;" id="branch">
+      &Fcy;&icy;&lcy;&icy;&acy;&lcy;
+     </span>
+     <a class="back-link mono" data-i18n="&Vcy; &Mcy;&IEcy;&Ncy;&YUcy; &nearrow;" href="menu.html" id="backLink">
+      &Vcy; &Mcy;&IEcy;&Ncy;&YUcy; &nearrow;
+     </a>
+     <select aria-label="Language / &Tcy;&icy;&lcy; / &YAcy;&zcy;&ycy;&kcy;" class="linus-lang" title="Language / &Tcy;&icy;&lcy; / &YAcy;&zcy;&ycy;&kcy;">
+      <option value="ky">
+       KY
+      </option>
+      <option value="ru">
+       RU
+      </option>
+      <option value="en">
+       EN
+      </option>
+     </select>
+    </div>
+   </header>
+   <main class="content" hidden="" id="orderContent">
+    <section aria-label="&Ncy;&ocy;&mcy;&iecy;&rcy; &zcy;&acy;&kcy;&acy;&zcy;&acy;" class="hero">
+     <canvas aria-hidden="true" class="particles-canvas" id="readyParticles">
+     </canvas>
+     <div class="hero-top reveal" style="--reveal-delay:0ms">
+      <div class="micro mono" data-i18n="/ LINUS &middot; &Zcy;&Acy;&Kcy;&Acy;&Zcy; &Pcy;&Rcy;&Icy;&Ncy;&YAcy;&Tcy;">
+       / LINUS &middot; &Zcy;&Acy;&Kcy;&Acy;&Zcy; &Pcy;&Rcy;&Icy;&Ncy;&YAcy;&Tcy;
+      </div>
+      <p data-i18n="&Vcy;&acy;&shcy; &vcy;&ycy;&bcy;&ocy;&rcy; &scy;&ocy;&khcy;&rcy;&acy;&ncy;&iocy;&ncy;. &Ncy;&ocy;&mcy;&iecy;&rcy; &pcy;&ocy;&ncy;&acy;&dcy;&ocy;&bcy;&icy;&tcy;&scy;&yacy;, &chcy;&tcy;&ocy;&bcy;&ycy; &ncy;&acy;&jcy;&tcy;&icy; &zcy;&acy;&kcy;&acy;&zcy;.">
+       &Vcy;&acy;&shcy; &vcy;&ycy;&bcy;&ocy;&rcy; &scy;&ocy;&khcy;&rcy;&acy;&ncy;&iocy;&ncy;. &Ncy;&ocy;&mcy;&iecy;&rcy; &pcy;&ocy;&ncy;&acy;&dcy;&ocy;&bcy;&icy;&tcy;&scy;&yacy;, &chcy;&tcy;&ocy;&bcy;&ycy; &ncy;&acy;&jcy;&tcy;&icy; &zcy;&acy;&kcy;&acy;&zcy;.
+      </p>
+     </div>
+     <div class="hero-main">
+      <span class="order-caption mono" data-i18n="&Ncy;&Ocy;&Mcy;&IEcy;&Rcy; &Vcy;&Acy;&SHcy;&IEcy;&Gcy;&Ocy; &Zcy;&Acy;&Kcy;&Acy;&Zcy;&Acy;">
+       &Ncy;&Ocy;&Mcy;&IEcy;&Rcy; &Vcy;&Acy;&SHcy;&IEcy;&Gcy;&Ocy; &Zcy;&Acy;&Kcy;&Acy;&Zcy;&Acy;
+      </span>
+      <div aria-label="&Ncy;&ocy;&mcy;&iecy;&rcy; &zcy;&acy;&kcy;&acy;&zcy;&acy;" class="number">
+       <span class="number-sign">
+        &numero;
+       </span>
+       <span aria-hidden="true" class="roll" id="roll">
+       </span>
+       <span class="sr-number" id="accessibleNumber" style="position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);">
+       </span>
+      </div>
+      <h1 class="hero-title reveal" style="--reveal-delay:100ms">
+       <span data-i18n="&Ocy;&scy;&tcy;&acy;&lcy;&ocy;&scy;&softcy; &ncy;&iecy;&mcy;&ncy;&ocy;&gcy;&ocy;.">
+        &Ocy;&scy;&tcy;&acy;&lcy;&ocy;&scy;&softcy; &ncy;&iecy;&mcy;&ncy;&ocy;&gcy;&ocy;.
+       </span>
+       <br/>
+       <em data-i18n="&Mcy;&ycy; &gcy;&ocy;&tcy;&ocy;&vcy;&icy;&mcy;.">
+        &Mcy;&ycy; &gcy;&ocy;&tcy;&ocy;&vcy;&icy;&mcy;.
+       </em>
+      </h1>
+      <p class="hero-subtitle reveal" data-i18n="&Scy;&lcy;&iecy;&dcy;&icy;&tcy;&iecy; &zcy;&acy; &ecy;&tcy;&acy;&pcy;&acy;&mcy;&icy; &pcy;&rcy;&icy;&gcy;&ocy;&tcy;&ocy;&vcy;&lcy;&iecy;&ncy;&icy;&yacy; &vcy;&acy;&shcy;&iecy;&gcy;&ocy; &zcy;&acy;&kcy;&acy;&zcy;&acy;." id="heroSubtitle" style="--reveal-delay:240ms">
+       &Scy;&lcy;&iecy;&dcy;&icy;&tcy;&iecy; &zcy;&acy; &ecy;&tcy;&acy;&pcy;&acy;&mcy;&icy; &pcy;&rcy;&icy;&gcy;&ocy;&tcy;&ocy;&vcy;&lcy;&iecy;&ncy;&icy;&yacy; &vcy;&acy;&shcy;&iecy;&gcy;&ocy; &zcy;&acy;&kcy;&acy;&zcy;&acy;.
+      </p>
+      <div aria-live="polite" class="ready-content" id="readyContent" role="status">
+       <p class="ready-eyebrow mono">
+        / ORDER COMPLETE
+       </p>
+       <h1 class="ready-title" data-i18n="&Vcy;&Acy;&SHcy; &Zcy;&Acy;&Kcy;&Acy;&Zcy; &Gcy;&Ocy;&Tcy;&Ocy;&Vcy;!">
+        &Vcy;&Acy;&SHcy; &Zcy;&Acy;&Kcy;&Acy;&Zcy; &Gcy;&Ocy;&Tcy;&Ocy;&Vcy;!
+       </h1>
+       <p class="ready-copy">
+        <span data-i18n="&Pcy;&ocy;&zhcy;&acy;&lcy;&ucy;&jcy;&scy;&tcy;&acy;, &pcy;&rcy;&ocy;&jcy;&dcy;&icy;&tcy;&iecy; &ncy;&acy; &scy;&tcy;&ocy;&jcy;&kcy;&ucy; &vcy;&ycy;&dcy;&acy;&chcy;&icy; &zcy;&acy;&kcy;&acy;&zcy;&ocy;&vcy; &icy; &scy;&kcy;&acy;&zhcy;&icy;&tcy;&iecy; &kcy;&ocy;&dcy;&ocy;&vcy;&ucy;&yucy; &fcy;&rcy;&acy;&zcy;&ucy;">
+         &Pcy;&ocy;&zhcy;&acy;&lcy;&ucy;&jcy;&scy;&tcy;&acy;, &pcy;&rcy;&ocy;&jcy;&dcy;&icy;&tcy;&iecy; &ncy;&acy; &scy;&tcy;&ocy;&jcy;&kcy;&ucy; &vcy;&ycy;&dcy;&acy;&chcy;&icy; &zcy;&acy;&kcy;&acy;&zcy;&ocy;&vcy; &icy; &scy;&kcy;&acy;&zhcy;&icy;&tcy;&iecy; &kcy;&ocy;&dcy;&ocy;&vcy;&ucy;&yucy; &fcy;&rcy;&acy;&zcy;&ucy;
+        </span>
+        <strong class="ready-word mono" id="pickupWord">
+        </strong>
+        <span data-i18n=", &chcy;&tcy;&ocy;&bcy;&ycy; &zcy;&acy;&bcy;&rcy;&acy;&tcy;&softcy; &zcy;&acy;&kcy;&acy;&zcy;.">
+         , &chcy;&tcy;&ocy;&bcy;&ycy; &zcy;&acy;&bcy;&rcy;&acy;&tcy;&softcy; &zcy;&acy;&kcy;&acy;&zcy;.
+        </span>
+       </p>
+       <span class="ready-sublabel mono" data-i18n="LINUS / &Pcy;&Rcy;&Icy;&YAcy;&Tcy;&Ncy;&Ocy;&Gcy;&Ocy; &Acy;&Pcy;&Pcy;&IEcy;&Tcy;&Icy;&Tcy;&Acy;">
+        LINUS / &Pcy;&Rcy;&Icy;&YAcy;&Tcy;&Ncy;&Ocy;&Gcy;&Ocy; &Acy;&Pcy;&Pcy;&IEcy;&Tcy;&Icy;&Tcy;&Acy;
+       </span>
+      </div>
+     </div>
+     <div class="hero-bottom reveal" style="--reveal-delay:370ms">
+      <div class="info-grid">
+       <div class="info-item">
+        <small class="mono" data-i18n="&Fcy;&Icy;&Lcy;&Icy;&Acy;&Lcy;">
+         &Fcy;&Icy;&Lcy;&Icy;&Acy;&Lcy;
+        </small>
+        <strong id="heroBranch">
+        </strong>
+       </div>
+       <div class="info-item">
+        <small class="mono" data-i18n="&Ocy;&Fcy;&Ocy;&Rcy;&Mcy;&Lcy;&IEcy;&Ncy;">
+         &Ocy;&Fcy;&Ocy;&Rcy;&Mcy;&Lcy;&IEcy;&Ncy;
+        </small>
+        <strong class="mono" id="createdTime">
+        </strong>
+       </div>
+       <div class="info-item">
+        <small class="mono" data-i18n="&Scy;&Ucy;&Mcy;&Mcy;&Acy;">
+         &Scy;&Ucy;&Mcy;&Mcy;&Acy;
+        </small>
+        <strong class="mono" id="heroTotal">
+        </strong>
+       </div>
+      </div>
+      <span aria-hidden="true" class="small-icon">
+       &nearrow;
+      </span>
+     </div>
+    </section>
+    <section aria-label="&Scy;&tcy;&acy;&tcy;&ucy;&scy; &zcy;&acy;&kcy;&acy;&zcy;&acy;" class="panel reveal" style="--reveal-delay:330ms">
+     <div class="panel-title">
+      <div>
+       <h2 data-i18n="&Pcy;&rcy;&ocy;&tscy;&iecy;&scy;&scy; &pcy;&rcy;&icy;&gcy;&ocy;&tcy;&ocy;&vcy;&lcy;&iecy;&ncy;&icy;&yacy;">
+        &Pcy;&rcy;&ocy;&tscy;&iecy;&scy;&scy; &pcy;&rcy;&icy;&gcy;&ocy;&tcy;&ocy;&vcy;&lcy;&iecy;&ncy;&icy;&yacy;
+       </h2>
+      </div>
+     </div>
+     <div class="thought" data-done="false" data-open="true" id="thought">
+      <button aria-controls="traceWrap" aria-expanded="true" class="thought-toggle" id="thoughtToggle" type="button">
+       <span aria-hidden="true" class="thought-glyph">
+       </span>
+       <span class="thought-label">
+        <strong class="shimmer" data-i18n="&Gcy;&ocy;&tcy;&ocy;&vcy;&icy;&mcy; &vcy;&acy;&shcy; &zcy;&acy;&kcy;&acy;&zcy;" id="thoughtLabel">
+         &Gcy;&ocy;&tcy;&ocy;&vcy;&icy;&mcy; &vcy;&acy;&shcy; &zcy;&acy;&kcy;&acy;&zcy;
+        </strong>
+        <span class="timer mono" id="thoughtTimer">
+         00:00
+        </span>
+       </span>
+       <span aria-hidden="true" class="thought-chevron">
+        ⌄
+       </span>
+      </button>
+      <div aria-label="&Pcy;&rcy;&ocy;&tscy;&iecy;&scy;&scy; &pcy;&rcy;&icy;&gcy;&ocy;&tcy;&ocy;&vcy;&lcy;&iecy;&ncy;&icy;&yacy;" aria-valuemax="25" aria-valuemin="0" aria-valuenow="0" class="mobile-progress" id="mobileProgress" role="progressbar">
+       <span aria-hidden="true" class="mobile-progress-segment">
+        <span class="mobile-progress-fill">
+        </span>
+       </span>
+       <span aria-hidden="true" class="mobile-progress-segment">
+        <span class="mobile-progress-fill">
+        </span>
+       </span>
+       <span aria-hidden="true" class="mobile-progress-segment">
+        <span class="mobile-progress-fill">
+        </span>
+       </span>
+       <span aria-hidden="true" class="mobile-progress-segment">
+        <span class="mobile-progress-fill">
+        </span>
+       </span>
+       <span aria-hidden="true" class="mobile-progress-segment">
+        <span class="mobile-progress-fill">
+        </span>
+       </span>
+      </div>
+      <div class="mobile-progress-label mono">
+       <span id="mobileStageLabel">
+        01 / 05
+       </span>
+       <span id="mobileStageName">
+        &Zcy;&acy;&kcy;&acy;&zcy; &pcy;&rcy;&icy;&ncy;&yacy;&tcy;
+       </span>
+      </div>
+      <div class="trace-wrap" id="traceWrap">
+       <div class="trace-clip">
+        <ol class="trace" id="trace">
+        </ol>
+       </div>
+      </div>
+     </div>
+     <button aria-controls="receipt" aria-expanded="false" class="mobile-receipt-toggle" id="receiptToggle" type="button">
+      <span class="mobile-receipt-label" data-i18n="&Vcy;&acy;&shcy;&icy; &bcy;&lcy;&yucy;&dcy;&acy;">
+       &Vcy;&acy;&shcy;&icy; &bcy;&lcy;&yucy;&dcy;&acy;
+      </span>
+      <span class="mobile-receipt-count mono" id="mobileReceiptCount">
+       1
+      </span>
+      <span class="mobile-receipt-total mono" id="mobileReceiptTotal">
+      </span>
+      <span aria-hidden="true" class="mobile-receipt-chevron">
+       ⌄
+      </span>
+     </button>
+     <div class="receipt" id="receipt">
+      <div class="receipt-head">
+       <h3 data-i18n="&Vcy;&acy;&shcy;&icy; &bcy;&lcy;&yucy;&dcy;&acy;">
+        &Vcy;&acy;&shcy;&icy; &bcy;&lcy;&yucy;&dcy;&acy;
+       </h3>
+       <span class="mono" id="itemCounter">
+       </span>
+      </div>
+      <div class="receipt-list" id="receiptList">
+      </div>
+      <div class="receipt-total">
+       <span class="mono" data-i18n="&Icy;&Tcy;&Ocy;&Gcy;&Ocy;">
+        &Icy;&Tcy;&Ocy;&Gcy;&Ocy;
+       </span>
+       <strong class="mono" id="receiptTotal">
+       </strong>
+      </div>
+     </div>
+    </section>
+   </main>
+   <div class="empty" hidden="" id="empty">
+    <div class="micro mono">
+     / ORDER NOT FOUND
+    </div>
+    <h1 data-i18n="&Zcy;&acy;&kcy;&acy;&zcy; &ncy;&iecy; &ncy;&acy;&jcy;&dcy;&iecy;&ncy;.">
+     &Zcy;&acy;&kcy;&acy;&zcy; &ncy;&iecy; &ncy;&acy;&jcy;&dcy;&iecy;&ncy;.
+    </h1>
+    <p>
+     <span data-i18n="&Vcy; &ecy;&tcy;&ocy;&mcy; &bcy;&rcy;&acy;&ucy;&zcy;&iecy;&rcy;&iecy; &pcy;&ocy;&kcy;&acy; &ncy;&iecy;&tcy; &scy;&ocy;&khcy;&rcy;&acy;&ncy;&iocy;&ncy;&ncy;&ocy;&gcy;&ocy; &zcy;&acy;&kcy;&acy;&zcy;&acy;.">
+      &Vcy; &ecy;&tcy;&ocy;&mcy; &bcy;&rcy;&acy;&ucy;&zcy;&iecy;&rcy;&iecy; &pcy;&ocy;&kcy;&acy; &ncy;&iecy;&tcy; &scy;&ocy;&khcy;&rcy;&acy;&ncy;&iocy;&ncy;&ncy;&ocy;&gcy;&ocy; &zcy;&acy;&kcy;&acy;&zcy;&acy;.
+     </span>
+     <br/>
+     <span data-i18n="&Ocy;&tcy;&kcy;&rcy;&ocy;&jcy;&tcy;&iecy; &mcy;&iecy;&ncy;&yucy; &icy; &pcy;&ocy;&dcy;&tcy;&vcy;&iecy;&rcy;&dcy;&icy;&tcy;&iecy; &zcy;&acy;&kcy;&acy;&zcy; &scy;&vcy;&acy;&jcy;&pcy;&ocy;&mcy;.">
+      &Ocy;&tcy;&kcy;&rcy;&ocy;&jcy;&tcy;&iecy; &mcy;&iecy;&ncy;&yucy; &icy; &pcy;&ocy;&dcy;&tcy;&vcy;&iecy;&rcy;&dcy;&icy;&tcy;&iecy; &zcy;&acy;&kcy;&acy;&zcy; &scy;&vcy;&acy;&jcy;&pcy;&ocy;&mcy;.
+     </span>
+    </p>
+    <a data-i18n="&Vcy;&iecy;&rcy;&ncy;&ucy;&tcy;&softcy;&scy;&yacy; &vcy; &mcy;&iecy;&ncy;&yucy;" href="menu.html" id="emptyLink">
+     &Vcy;&iecy;&rcy;&ncy;&ucy;&tcy;&softcy;&scy;&yacy; &vcy; &mcy;&iecy;&ncy;&yucy;
+    </a>
+   </div>
+  </div>
+  <script defer="True" src="assets/data/translations.js">
+  </script>
+  <script defer="True" src="assets/js/core/i18n.js">
+  </script>
+  <script defer="True" src="assets/data/branches.js">
+  </script>
+  <footer class="linus-footer">
+   <span class="footer-brand mono" data-i18n="&copy; 2026 LINUS &middot; &Vcy;&scy;&iecy; &pcy;&rcy;&acy;&vcy;&acy; &zcy;&acy;&shchcy;&icy;&shchcy;&iecy;&ncy;&ycy;">
+    &copy; 2026 LINUS &middot; &Vcy;&scy;&iecy; &pcy;&rcy;&acy;&vcy;&acy; &zcy;&acy;&shchcy;&icy;&shchcy;&iecy;&ncy;&ycy;
+   </span>
+   <a class="footer-center" href="mailto:support@linus-example.com">
+    support@linus-example.com
+   </a>
+   <button data-i18n="&Rcy;&iecy;&kcy;&vcy;&icy;&zcy;&icy;&tcy;&ycy;" data-open-legal="" type="button">
+    &Rcy;&iecy;&kcy;&vcy;&icy;&zcy;&icy;&tcy;&ycy;
+   </button>
+  </footer>
+  <dialog aria-labelledby="linusLegalTitle" class="linus-legal" id="linusLegal">
+   <div class="linus-legal-body">
+    <div class="linus-legal-head">
+     <h2 data-i18n="&Pcy;&rcy;&acy;&vcy;&ocy;&vcy;&acy;&yacy; &icy;&ncy;&fcy;&ocy;&rcy;&mcy;&acy;&tscy;&icy;&yacy;" id="linusLegalTitle">
+      &Pcy;&rcy;&acy;&vcy;&ocy;&vcy;&acy;&yacy; &icy;&ncy;&fcy;&ocy;&rcy;&mcy;&acy;&tscy;&icy;&yacy;
+     </h2>
+     <button aria-label="&Zcy;&acy;&kcy;&rcy;&ycy;&tcy;&softcy;" class="close-legal" data-close-legal="" data-i18n-aria="&Zcy;&acy;&kcy;&rcy;&ycy;&tcy;&softcy;" type="button">
+      &times;
+     </button>
+    </div>
+    <p data-i18n="&Ucy;&chcy;&iecy;&bcy;&ncy;&ycy;&jcy; &pcy;&rcy;&ocy;&iecy;&kcy;&tcy; &mdash; &vcy;&scy;&iecy; &scy;&vcy;&iecy;&dcy;&iecy;&ncy;&icy;&yacy; &vcy;&ycy;&mcy;&ycy;&shcy;&lcy;&iecy;&ncy;&ycy;.">
+     &Ucy;&chcy;&iecy;&bcy;&ncy;&ycy;&jcy; &pcy;&rcy;&ocy;&iecy;&kcy;&tcy; &mdash; &vcy;&scy;&iecy; &scy;&vcy;&iecy;&dcy;&iecy;&ncy;&icy;&yacy; &vcy;&ycy;&mcy;&ycy;&shcy;&lcy;&iecy;&ncy;&ycy;.
+    </p>
+    <p data-i18n="&Ocy;&bcy;&shchcy;&iecy;&scy;&tcy;&vcy;&ocy; &scy; &ocy;&gcy;&rcy;&acy;&ncy;&icy;&chcy;&iecy;&ncy;&ncy;&ocy;&jcy; &ocy;&tcy;&vcy;&iecy;&tcy;&scy;&tcy;&vcy;&iecy;&ncy;&ncy;&ocy;&scy;&tcy;&softcy;&yucy; &laquo;LINUS DEMO&raquo; (&vcy;&ycy;&mcy;&ycy;&shcy;&lcy;&iecy;&ncy;&ncy;&ocy;&iecy;)">
+     &Ocy;&bcy;&shchcy;&iecy;&scy;&tcy;&vcy;&ocy; &scy; &ocy;&gcy;&rcy;&acy;&ncy;&icy;&chcy;&iecy;&ncy;&ncy;&ocy;&jcy; &ocy;&tcy;&vcy;&iecy;&tcy;&scy;&tcy;&vcy;&iecy;&ncy;&ncy;&ocy;&scy;&tcy;&softcy;&yucy; &laquo;LINUS DEMO&raquo; (&vcy;&ycy;&mcy;&ycy;&shcy;&lcy;&iecy;&ncy;&ncy;&ocy;&iecy;)
+    </p>
+    <p data-i18n="&Icy;&Ncy;&Ncy; (&vcy;&ycy;&mcy;&ycy;&shcy;&lcy;&iecy;&ncy;&ncy;&ycy;&jcy;): 00000000000000">
+     &Icy;&Ncy;&Ncy; (&vcy;&ycy;&mcy;&ycy;&shcy;&lcy;&iecy;&ncy;&ncy;&ycy;&jcy;): 00000000000000
+    </p>
+    <p data-i18n="&Rcy;&iecy;&gcy;&icy;&scy;&tcy;&rcy;&acy;&tscy;&icy;&ocy;&ncy;&ncy;&ycy;&jcy; &ncy;&ocy;&mcy;&iecy;&rcy; (&vcy;&ycy;&mcy;&ycy;&shcy;&lcy;&iecy;&ncy;&ncy;&ycy;&jcy;): DEMO-KG-2026-001">
+     &Rcy;&iecy;&gcy;&icy;&scy;&tcy;&rcy;&acy;&tscy;&icy;&ocy;&ncy;&ncy;&ycy;&jcy; &ncy;&ocy;&mcy;&iecy;&rcy; (&vcy;&ycy;&mcy;&ycy;&shcy;&lcy;&iecy;&ncy;&ncy;&ycy;&jcy;): DEMO-KG-2026-001
+    </p>
+    <p data-i18n="&YUcy;&rcy;&icy;&dcy;&icy;&chcy;&iecy;&scy;&kcy;&icy;&jcy; &acy;&dcy;&rcy;&iecy;&scy; (&vcy;&ycy;&mcy;&ycy;&shcy;&lcy;&iecy;&ncy;&ncy;&ycy;&jcy;): &Kcy;&ycy;&rcy;&gcy;&ycy;&zcy;&scy;&tcy;&acy;&ncy;, &Bcy;&icy;&shcy;&kcy;&iecy;&kcy;, &Ucy;&chcy;&iecy;&bcy;&ncy;&acy;&yacy;, 1">
+     &YUcy;&rcy;&icy;&dcy;&icy;&chcy;&iecy;&scy;&kcy;&icy;&jcy; &acy;&dcy;&rcy;&iecy;&scy; (&vcy;&ycy;&mcy;&ycy;&shcy;&lcy;&iecy;&ncy;&ncy;&ycy;&jcy;): &Kcy;&ycy;&rcy;&gcy;&ycy;&zcy;&scy;&tcy;&acy;&ncy;, &Bcy;&icy;&shcy;&kcy;&iecy;&kcy;, &Ucy;&chcy;&iecy;&bcy;&ncy;&acy;&yacy;, 1
+    </p>
+    <p>
+     <a href="mailto:support@linus-example.com">
+      support@linus-example.com
+     </a>
+    </p>
+    <p data-i18n="&Dcy;&acy;&ncy;&ncy;&ycy;&iecy; &zcy;&acy;&kcy;&acy;&zcy;&acy; &khcy;&rcy;&acy;&ncy;&yacy;&tcy;&scy;&yacy; &tcy;&ocy;&lcy;&softcy;&kcy;&ocy; &vcy; &ecy;&tcy;&ocy;&mcy; &bcy;&rcy;&acy;&ucy;&zcy;&iecy;&rcy;&iecy; (localStorage). &Ocy;&pcy;&lcy;&acy;&tcy;&acy; &icy; &pcy;&iecy;&rcy;&iecy;&dcy;&acy;&chcy;&acy; &ncy;&acy; &kcy;&ucy;&khcy;&ncy;&yucy; &ncy;&iecy; &ocy;&scy;&ucy;&shchcy;&iecy;&scy;&tcy;&vcy;&lcy;&yacy;&yucy;&tcy;&scy;&yacy;.">
+     &Dcy;&acy;&ncy;&ncy;&ycy;&iecy; &zcy;&acy;&kcy;&acy;&zcy;&acy; &khcy;&rcy;&acy;&ncy;&yacy;&tcy;&scy;&yacy; &tcy;&ocy;&lcy;&softcy;&kcy;&ocy; &vcy; &ecy;&tcy;&ocy;&mcy; &bcy;&rcy;&acy;&ucy;&zcy;&iecy;&rcy;&iecy; (localStorage). &Ocy;&pcy;&lcy;&acy;&tcy;&acy; &icy; &pcy;&iecy;&rcy;&iecy;&dcy;&acy;&chcy;&acy; &ncy;&acy; &kcy;&ucy;&khcy;&ncy;&yucy; &ncy;&iecy; &ocy;&scy;&ucy;&shchcy;&iecy;&scy;&tcy;&vcy;&lcy;&yacy;&yucy;&tcy;&scy;&yacy;.
+    </p>
+    <p data-i18n="&Vcy;&scy;&iecy; &tscy;&iecy;&ncy;&ycy;, &chcy;&acy;&scy;&ycy; &rcy;&acy;&bcy;&ocy;&tcy;&ycy; &icy; &yucy;&rcy;&icy;&dcy;&icy;&chcy;&iecy;&scy;&kcy;&icy;&iecy; &scy;&vcy;&iecy;&dcy;&iecy;&ncy;&icy;&yacy; &pcy;&rcy;&icy;&vcy;&iecy;&dcy;&iecy;&ncy;&ycy; &tcy;&ocy;&lcy;&softcy;&kcy;&ocy; &dcy;&lcy;&yacy; &ucy;&chcy;&iecy;&bcy;&ncy;&ocy;&jcy; &dcy;&iecy;&mcy;&ocy;&ncy;&scy;&tcy;&rcy;&acy;&tscy;&icy;&icy;.">
+     &Vcy;&scy;&iecy; &tscy;&iecy;&ncy;&ycy;, &chcy;&acy;&scy;&ycy; &rcy;&acy;&bcy;&ocy;&tcy;&ycy; &icy; &yucy;&rcy;&icy;&dcy;&icy;&chcy;&iecy;&scy;&kcy;&icy;&iecy; &scy;&vcy;&iecy;&dcy;&iecy;&ncy;&icy;&yacy; &pcy;&rcy;&icy;&vcy;&iecy;&dcy;&iecy;&ncy;&ycy; &tcy;&ocy;&lcy;&softcy;&kcy;&ocy; &dcy;&lcy;&yacy; &ucy;&chcy;&iecy;&bcy;&ncy;&ocy;&jcy; &dcy;&iecy;&mcy;&ocy;&ncy;&scy;&tcy;&rcy;&acy;&tscy;&icy;&icy;.
+    </p>
+   </div>
+  </dialog>
+  <script defer="" src="assets/js/order.js">
+  </script>
+  <script defer="True" src="assets/js/core/site.js">
+  </script>
+ </body>
+</html>
