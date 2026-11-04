@@ -1,279 +1,347 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
-  <meta content="#090a09" name="theme-color"/>
-  <title>
-   LINUS — Меню
-  </title>
-  <link href="https://fonts.googleapis.com" rel="preconnect"/>
-  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
-  <link href="assets/css/menu.css" rel="stylesheet"/>
-  <link href="assets/css/shared.css" rel="stylesheet"/>
- </head>
- <body data-page="menu">
-  <div class="app">
-   <header class="header">
-    <a class="brand" href="index.html">
-     LINUS
-    </a>
-    <div class="header-right">
-     <span class="location" id="locationLabel">
-     </span>
-     <button aria-label="Открыть заказ" class="cart-link mono" id="cartButton" type="button">
-      <span data-i18n="ЗАКАЗ">
-       ЗАКАЗ
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+      name="viewport"
+    />
+    <meta content="#090a09" name="theme-color" />
+    <title>LINUS — Меню</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link href="/src/styles/menu.css" rel="stylesheet" />
+    <link href="/src/styles/shared.css" rel="stylesheet" />
+  </head>
+  <body data-page="menu">
+    <div class="app">
+      <header class="header">
+        <a class="brand" href="index.html"> LINUS </a>
+        <div class="header-right">
+          <span class="location" id="locationLabel"> </span>
+          <button
+            aria-label="Открыть заказ"
+            class="cart-link mono"
+            id="cartButton"
+            type="button"
+          >
+            <span data-i18n="ЗАКАЗ"> ЗАКАЗ </span>
+            <span class="cart-count" id="cartCount"> 0 </span>
+          </button>
+          <a class="change mono" data-i18n="ИЗМЕНИТЬ ↗" href="index.html">
+            ИЗМЕНИТЬ ↗
+          </a>
+          <select
+            aria-label="Language / Тил / Язык"
+            class="linus-lang"
+            title="Language / Тил / Язык"
+          >
+            <option value="ky">KY</option>
+            <option value="ru">RU</option>
+            <option value="en">EN</option>
+          </select>
+        </div>
+      </header>
+      <nav aria-label="Категории меню" class="nav">
+        <button
+          aria-label="Предыдущая категория"
+          class="nav-arrow"
+          data-i18n-aria="Предыдущая категория"
+          id="prev"
+          type="button"
+        >
+          ←
+        </button>
+        <div
+          aria-label="Категории"
+          class="nav-track"
+          id="categoryTrack"
+          role="tablist"
+          tabindex="0"
+        ></div>
+        <span class="nav-mark"> </span>
+        <button
+          aria-label="Следующая категория"
+          class="nav-arrow"
+          data-i18n-aria="Следующая категория"
+          id="next"
+          type="button"
+        >
+          →
+        </button>
+      </nav>
+      <main class="gallery" id="gallery">
+        <div
+          aria-label="3D-галерея блюд. Перетаскивайте для поворота"
+          class="stage"
+          id="stage"
+        >
+          <div class="sphere" id="sphere"></div>
+        </div>
+        <div class="vignette"></div>
+        <div class="gallery-overlay top mono">
+          <span class="gold" id="galleryTitle"> ДЕСЕРТЫ </span>
+          <span class="dim" id="galleryCount"> </span>
+        </div>
+        <div class="gallery-overlay bottom mono">
+          <span class="dim"> DRAG TO EXPLORE ↔ </span>
+          <span class="dim" data-i18n="НАЖМИТЕ НА БЛЮДО ДЛЯ ПОДРОБНОСТЕЙ">
+            НАЖМИТЕ НА БЛЮДО ДЛЯ ПОДРОБНОСТЕЙ
+          </span>
+        </div>
+      </main>
+    </div>
+    <div
+      aria-labelledby="dishTitle"
+      aria-modal="true"
+      class="dish-overlay"
+      hidden=""
+      id="dishOverlay"
+      role="dialog"
+    >
+      <div class="dish-backdrop" id="dishBackdrop"></div>
+      <section
+        aria-label="Информация о блюде"
+        class="dish-panel"
+        id="dishPanel"
+      >
+        <button
+          aria-label="Закрыть"
+          class="close"
+          data-i18n-aria="Закрыть"
+          id="closeDialog"
+          type="button"
+        >
+          ×
+        </button>
+        <div class="dish-morph-cover" id="dishMorphCover" aria-hidden="true">
+          <img id="dishMorphImage" alt="" />
+          <span class="dish-morph-label" id="dishMorphLabel"></span>
+        </div>
+        <div class="dish-media" id="dishMedia">
+          <img alt="" id="dishImage" />
+        </div>
+        <div class="dish-copy" id="dishCopy">
+          <span class="dialog-category mono" id="dishCategory"> </span>
+          <h2 id="dishTitle"></h2>
+          <p class="dish-description" id="dishDescription"></p>
+          <div class="details-section">
+            <div class="section-label mono" data-i18n="СОСТАВ">СОСТАВ</div>
+            <p id="dishIngredients"></p>
+          </div>
+          <div class="details-section">
+            <div class="section-label mono" data-i18n="КОМУ ПОДОЙДЁТ">
+              КОМУ ПОДОЙДЁТ
+            </div>
+            <div class="tags" id="dishTags"></div>
+          </div>
+          <div class="details-facts">
+            <div>
+              <span class="section-label mono" data-i18n="ПРИГОТОВЛЕНИЕ">
+                ПРИГОТОВЛЕНИЕ
+              </span>
+              <strong id="dishTime"> </strong>
+            </div>
+            <div>
+              <span class="section-label mono" data-i18n="ПОРЦИЯ">
+                ПОРЦИЯ
+              </span>
+              <strong id="dishWeight"> </strong>
+            </div>
+          </div>
+          <div class="allergens" id="dishAllergens"></div>
+          <div class="order-bottom">
+            <div class="order-price mono" id="dishPrice"></div>
+            <div aria-label="Количество порций" class="qty-control">
+              <button
+                aria-label="Уменьшить"
+                data-i18n-aria="Уменьшить"
+                id="qtyMinus"
+                type="button"
+              >
+                −
+              </button>
+              <output aria-live="polite" id="qtyValue"> 1 </output>
+              <button
+                aria-label="Увеличить"
+                data-i18n-aria="Увеличить"
+                id="qtyPlus"
+                type="button"
+              >
+                +
+              </button>
+            </div>
+          </div>
+          <button class="order-add" id="addOrder" type="button">
+            <span data-i18n="ДОБАВИТЬ"> ДОБАВИТЬ </span>
+            <span id="orderTotal"> </span>
+            <span aria-hidden="true"> ↗ </span>
+          </button>
+        </div>
+      </section>
+    </div>
+    <dialog aria-labelledby="cartTitle" class="cart-dialog" id="cartDialog">
+      <header class="cart-header">
+        <div>
+          <span class="micro mono"> LINUS / LOCAL ORDER </span>
+          <h2 data-i18n="Ваш заказ" id="cartTitle">Ваш заказ</h2>
+        </div>
+        <button
+          aria-label="Закрыть заказ"
+          class="cart-x"
+          data-i18n-aria="Закрыть заказ"
+          id="cartClose"
+          type="button"
+        >
+          ×
+        </button>
+      </header>
+      <p class="cart-branch mono" id="cartBranch"></p>
+      <div class="cart-list" id="cartList"></div>
+      <div class="cart-footer">
+        <div class="cart-total mono">
+          <span data-i18n="ИТОГО"> ИТОГО </span>
+          <strong id="cartTotal"> 0 сом </strong>
+        </div>
+        <p
+          data-i18n="Подтвердите заказ свайпом. Это демонстрационный сценарий без передачи на кухню и без оплаты."
+        >
+          Подтвердите заказ свайпом. Это демонстрационный сценарий без передачи
+          на кухню и без оплаты.
+        </p>
+        <div class="sc-root" id="slideCommit">
+          <div
+            class="sc-track"
+            data-disabled="true"
+            data-phase="idle"
+            id="slideTrack"
+          >
+            <div class="sc-fill"></div>
+            <span
+              class="sc-label"
+              data-i18n="Проведите, чтобы заказать →"
+              id="slideLabel"
+            >
+              Проведите, чтобы заказать →
+            </span>
+            <div
+              aria-label="Подтвердить заказ свайпом вправо"
+              aria-valuemax="100"
+              aria-valuemin="0"
+              aria-valuenow="0"
+              aria-valuetext="0%"
+              class="sc-thumb"
+              id="slideThumb"
+              role="slider"
+              tabindex="0"
+            >
+              <svg
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2.2"
+                viewbox="0 0 24 24"
+              >
+                <path d="M4 12h16m-7-7 7 7-7 7"></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div
+          class="sc-hint mono"
+          data-i18n="ПЕРЕТАЩИТЕ ПОЛЗУНОК ДО КОНЦА"
+          id="slideHint"
+        >
+          ПЕРЕТАЩИТЕ ПОЛЗУНОК ДО КОНЦА
+        </div>
+        <button
+          class="clear-button"
+          data-i18n="ОЧИСТИТЬ КОРЗИНУ"
+          id="cartClear"
+          type="button"
+        >
+          ОЧИСТИТЬ КОРЗИНУ
+        </button>
+      </div>
+    </dialog>
+    <div aria-live="polite" class="toast" id="toast" role="status"></div>
+    <footer class="linus-footer">
+      <span
+        class="footer-brand mono"
+        data-i18n="© 2026 LINUS · Все права защищены"
+      >
+        © 2026 LINUS · Все права защищены
       </span>
-      <span class="cart-count" id="cartCount">
-       0
-      </span>
-     </button>
-     <a class="change mono" data-i18n="ИЗМЕНИТЬ ↗" href="index.html">
-      ИЗМЕНИТЬ ↗
-     </a>
-     <select aria-label="Language / Тил / Язык" class="linus-lang" title="Language / Тил / Язык">
-      <option value="ky">
-       KY
-      </option>
-      <option value="ru">
-       RU
-      </option>
-      <option value="en">
-       EN
-      </option>
-     </select>
-    </div>
-   </header>
-   <nav aria-label="Категории меню" class="nav">
-    <button aria-label="Предыдущая категория" class="nav-arrow" data-i18n-aria="Предыдущая категория" id="prev" type="button">
-     ←
-    </button>
-    <div aria-label="Категории" class="nav-track" id="categoryTrack" role="tablist" tabindex="0">
-    </div>
-    <span class="nav-mark">
-    </span>
-    <button aria-label="Следующая категория" class="nav-arrow" data-i18n-aria="Следующая категория" id="next" type="button">
-     →
-    </button>
-   </nav>
-   <main class="gallery" id="gallery">
-    <div aria-label="3D-галерея блюд. Перетаскивайте для поворота" class="stage" id="stage">
-     <div class="sphere" id="sphere">
-     </div>
-    </div>
-    <div class="vignette">
-    </div>
-    <div class="gallery-overlay top mono">
-     <span class="gold" id="galleryTitle">
-      ДЕСЕРТЫ
-     </span>
-     <span class="dim" id="galleryCount">
-     </span>
-    </div>
-    <div class="gallery-overlay bottom mono">
-     <span class="dim">
-      DRAG TO EXPLORE ↔
-     </span>
-     <span class="dim" data-i18n="НАЖМИТЕ НА БЛЮДО ДЛЯ ПОДРОБНОСТЕЙ">
-      НАЖМИТЕ НА БЛЮДО ДЛЯ ПОДРОБНОСТЕЙ
-     </span>
-    </div>
-   </main>
-  </div>
-  <div aria-labelledby="dishTitle" aria-modal="true" class="dish-overlay" hidden="" id="dishOverlay" role="dialog">
-   <div class="dish-backdrop" id="dishBackdrop">
-   </div>
-   <section aria-label="Информация о блюде" class="dish-panel" id="dishPanel">
-    <button aria-label="Закрыть" class="close" data-i18n-aria="Закрыть" id="closeDialog" type="button">
-     ×
-    </button>
-    <div class="dish-media" id="dishMedia">
-     <img alt="" id="dishImage"/>
-    </div>
-    <div class="dish-copy" id="dishCopy">
-     <span class="dialog-category mono" id="dishCategory">
-     </span>
-     <h2 id="dishTitle">
-     </h2>
-     <p class="dish-description" id="dishDescription">
-     </p>
-     <div class="details-section">
-      <div class="section-label mono" data-i18n="СОСТАВ">
-       СОСТАВ
+      <a class="footer-center" href="mailto:support@linus-example.com">
+        support@linus-example.com
+      </a>
+      <button data-i18n="Реквизиты" data-open-legal="" type="button">
+        Реквизиты
+      </button>
+    </footer>
+    <dialog
+      aria-labelledby="linusLegalTitle"
+      class="linus-legal"
+      id="linusLegal"
+    >
+      <div class="linus-legal-body">
+        <div class="linus-legal-head">
+          <h2 data-i18n="Правовая информация" id="linusLegalTitle">
+            Правовая информация
+          </h2>
+          <button
+            aria-label="Закрыть"
+            class="close-legal"
+            data-close-legal=""
+            data-i18n-aria="Закрыть"
+            type="button"
+          >
+            ×
+          </button>
+        </div>
+        <p data-i18n="Учебный проект — все сведения вымышлены.">
+          Учебный проект — все сведения вымышлены.
+        </p>
+        <p
+          data-i18n="Общество с ограниченной ответственностью «LINUS DEMO» (вымышленное)"
+        >
+          Общество с ограниченной ответственностью «LINUS DEMO» (вымышленное)
+        </p>
+        <p data-i18n="ИНН (вымышленный): 00000000000000">
+          ИНН (вымышленный): 00000000000000
+        </p>
+        <p data-i18n="Регистрационный номер (вымышленный): DEMO-KG-2026-001">
+          Регистрационный номер (вымышленный): DEMO-KG-2026-001
+        </p>
+        <p
+          data-i18n="Юридический адрес (вымышленный): Кыргызстан, Бишкек, Учебная, 1"
+        >
+          Юридический адрес (вымышленный): Кыргызстан, Бишкек, Учебная, 1
+        </p>
+        <p>
+          <a href="mailto:support@linus-example.com">
+            support@linus-example.com
+          </a>
+        </p>
+        <p
+          data-i18n="Данные заказа хранятся только в этом браузере (localStorage). Оплата и передача на кухню не осуществляются."
+        >
+          Данные заказа хранятся только в этом браузере (localStorage). Оплата и
+          передача на кухню не осуществляются.
+        </p>
+        <p
+          data-i18n="Все цены, часы работы и юридические сведения приведены только для учебной демонстрации."
+        >
+          Все цены, часы работы и юридические сведения приведены только для
+          учебной демонстрации.
+        </p>
       </div>
-      <p id="dishIngredients">
-      </p>
-     </div>
-     <div class="details-section">
-      <div class="section-label mono" data-i18n="КОМУ ПОДОЙДЁТ">
-       КОМУ ПОДОЙДЁТ
-      </div>
-      <div class="tags" id="dishTags">
-      </div>
-     </div>
-     <div class="details-facts">
-      <div>
-       <span class="section-label mono" data-i18n="ПРИГОТОВЛЕНИЕ">
-        ПРИГОТОВЛЕНИЕ
-       </span>
-       <strong id="dishTime">
-       </strong>
-      </div>
-      <div>
-       <span class="section-label mono" data-i18n="ПОРЦИЯ">
-        ПОРЦИЯ
-       </span>
-       <strong id="dishWeight">
-       </strong>
-      </div>
-     </div>
-     <div class="allergens" id="dishAllergens">
-     </div>
-     <div class="order-bottom">
-      <div class="order-price mono" id="dishPrice">
-      </div>
-      <div aria-label="Количество порций" class="qty-control">
-       <button aria-label="Уменьшить" data-i18n-aria="Уменьшить" id="qtyMinus" type="button">
-        −
-       </button>
-       <output aria-live="polite" id="qtyValue">
-        1
-       </output>
-       <button aria-label="Увеличить" data-i18n-aria="Увеличить" id="qtyPlus" type="button">
-        +
-       </button>
-      </div>
-     </div>
-     <button class="order-add" id="addOrder" type="button">
-      <span data-i18n="ДОБАВИТЬ">
-       ДОБАВИТЬ
-      </span>
-      <span id="orderTotal">
-      </span>
-      <span aria-hidden="true">
-       ↗
-      </span>
-     </button>
-    </div>
-   </section>
-  </div>
-  <dialog aria-labelledby="cartTitle" class="cart-dialog" id="cartDialog">
-   <header class="cart-header">
-    <div>
-     <span class="micro mono">
-      LINUS / LOCAL ORDER
-     </span>
-     <h2 data-i18n="Ваш заказ" id="cartTitle">
-      Ваш заказ
-     </h2>
-    </div>
-    <button aria-label="Закрыть заказ" class="cart-x" data-i18n-aria="Закрыть заказ" id="cartClose" type="button">
-     ×
-    </button>
-   </header>
-   <p class="cart-branch mono" id="cartBranch">
-   </p>
-   <div class="cart-list" id="cartList">
-   </div>
-   <div class="cart-footer">
-    <div class="cart-total mono">
-     <span data-i18n="ИТОГО">
-      ИТОГО
-     </span>
-     <strong id="cartTotal">
-      0 сом
-     </strong>
-    </div>
-    <p data-i18n="Подтвердите заказ свайпом. Это демонстрационный сценарий без передачи на кухню и без оплаты.">
-     Подтвердите заказ свайпом. Это демонстрационный сценарий без передачи на кухню и без оплаты.
-    </p>
-    <div class="sc-root" id="slideCommit">
-     <div class="sc-track" data-disabled="true" data-phase="idle" id="slideTrack">
-      <div class="sc-fill">
-      </div>
-      <span class="sc-label" data-i18n="Проведите, чтобы заказать →" id="slideLabel">
-       Проведите, чтобы заказать →
-      </span>
-      <div aria-label="Подтвердить заказ свайпом вправо" aria-valuemax="100" aria-valuemin="0" aria-valuenow="0" aria-valuetext="0%" class="sc-thumb" id="slideThumb" role="slider" tabindex="0">
-       <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24">
-        <path d="M4 12h16m-7-7 7 7-7 7">
-        </path>
-       </svg>
-      </div>
-     </div>
-    </div>
-    <div class="sc-hint mono" data-i18n="ПЕРЕТАЩИТЕ ПОЛЗУНОК ДО КОНЦА" id="slideHint">
-     ПЕРЕТАЩИТЕ ПОЛЗУНОК ДО КОНЦА
-    </div>
-    <button class="clear-button" data-i18n="ОЧИСТИТЬ КОРЗИНУ" id="cartClear" type="button">
-     ОЧИСТИТЬ КОРЗИНУ
-    </button>
-   </div>
-  </dialog>
-  <div aria-live="polite" class="toast" id="toast" role="status">
-  </div>
-  <script defer="True" src="assets/data/translations.js">
-  </script>
-  <script defer="True" src="assets/js/core/i18n.js">
-  </script>
-  <script defer="True" src="assets/data/branches.js">
-  </script>
-  <script defer="True" src="assets/data/menu.js">
-  </script>
-  <footer class="linus-footer">
-   <span class="footer-brand mono" data-i18n="© 2026 LINUS · Все права защищены">
-    © 2026 LINUS · Все права защищены
-   </span>
-   <a class="footer-center" href="mailto:support@linus-example.com">
-    support@linus-example.com
-   </a>
-   <button data-i18n="Реквизиты" data-open-legal="" type="button">
-    Реквизиты
-   </button>
-  </footer>
-  <dialog aria-labelledby="linusLegalTitle" class="linus-legal" id="linusLegal">
-   <div class="linus-legal-body">
-    <div class="linus-legal-head">
-     <h2 data-i18n="Правовая информация" id="linusLegalTitle">
-      Правовая информация
-     </h2>
-     <button aria-label="Закрыть" class="close-legal" data-close-legal="" data-i18n-aria="Закрыть" type="button">
-      ×
-     </button>
-    </div>
-    <p data-i18n="Учебный проект — все сведения вымышлены.">
-     Учебный проект — все сведения вымышлены.
-    </p>
-    <p data-i18n="Общество с ограниченной ответственностью «LINUS DEMO» (вымышленное)">
-     Общество с ограниченной ответственностью «LINUS DEMO» (вымышленное)
-    </p>
-    <p data-i18n="ИНН (вымышленный): 00000000000000">
-     ИНН (вымышленный): 00000000000000
-    </p>
-    <p data-i18n="Регистрационный номер (вымышленный): DEMO-KG-2026-001">
-     Регистрационный номер (вымышленный): DEMO-KG-2026-001
-    </p>
-    <p data-i18n="Юридический адрес (вымышленный): Кыргызстан, Бишкек, Учебная, 1">
-     Юридический адрес (вымышленный): Кыргызстан, Бишкек, Учебная, 1
-    </p>
-    <p>
-     <a href="mailto:support@linus-example.com">
-      support@linus-example.com
-     </a>
-    </p>
-    <p data-i18n="Данные заказа хранятся только в этом браузере (localStorage). Оплата и передача на кухню не осуществляются.">
-     Данные заказа хранятся только в этом браузере (localStorage). Оплата и передача на кухню не осуществляются.
-    </p>
-    <p data-i18n="Все цены, часы работы и юридические сведения приведены только для учебной демонстрации.">
-     Все цены, часы работы и юридические сведения приведены только для учебной демонстрации.
-    </p>
-   </div>
-  </dialog>
-  <script defer="" src="assets/js/menu.js">
-  </script>
-  <script defer="True" src="assets/js/core/site.js">
-  </script>
- </body>
+    </dialog>
+    <script type="module" src="/src/pages/menu.js"></script>
+  </body>
 </html>

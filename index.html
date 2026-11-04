@@ -1,185 +1,206 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
-  <meta content="#090a09" name="theme-color"/>
-  <title>
-   LINUS — Выбор ресторана
-  </title>
-  <link href="https://fonts.googleapis.com" rel="preconnect"/>
-  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
-  <link href="assets/css/index.css" rel="stylesheet"/>
-  <link href="assets/css/shared.css" rel="stylesheet"/>
-  <script defer="True" src="assets/data/translations.js">
-  </script>
-  <script defer="" src="assets/js/core/i18n.js">
-  </script>
-  <script defer="" src="assets/data/branches.js">
-  </script>
-  <script defer="" src="assets/js/index.js">
-  </script>
-  <script defer="" src="assets/js/core/site.js">
-  </script>
- </head>
- <body data-page="index">
-  <div class="site">
-   <header class="header">
-    <a class="logo" href="index.html">
-     LINUS
-    </a>
-    <select aria-label="Language / Тил / Язык" class="linus-lang" title="Language / Тил / Язык">
-     <option value="ky">
-      KY
-     </option>
-     <option value="ru">
-      RU
-     </option>
-     <option value="en">
-      EN
-     </option>
-    </select>
-   </header>
-   <main class="layout">
-    <section aria-label="Выбор филиала" class="selector" data-i18n-aria="Выберите филиал">
-     <div class="selector-intro">
-      <div class="eyebrow mono">
-       &gt; SELECT_LOCATION
-      </div>
-      <h1 data-i18n="В каком вы сейчас ресторане?">
-       В каком вы сейчас ресторане?
-      </h1>
-      <p class="selector-description" data-i18n="Выберите филиал, чтобы продолжить.">
-       Выберите филиал, чтобы продолжить.
-      </p>
-     </div>
-     <div class="wheel-area">
-      <span aria-hidden="true" class="wheel-marker">
-      </span>
-      <div aria-label="Список филиалов" class="wheel" data-i18n-aria="Список филиалов" id="wheel" role="listbox" tabindex="0">
-      </div>
-     </div>
-     <div class="selector-bottom">
-      <div class="wheel-meta mono">
-       <span id="counter">
-        01 / 04
-       </span>
-       <div class="wheel-keys">
-        <span data-i18n="НАВИГАЦИЯ">
-         НАВИГАЦИЯ
-        </span>
-        <span class="key">
-         ↑
-        </span>
-        <span class="key">
-         ↓
-        </span>
-       </div>
-      </div>
-      <button class="select-button" id="confirm" type="button">
-       <span data-i18n="Продолжить">
-        Продолжить
-       </span>
-       <svg aria-hidden="true" fill="none" height="20" stroke="currentColor" stroke-width="1.6" viewbox="0 0 24 24" width="20">
-        <path d="M4 12h16m-7-7 7 7-7 7">
-        </path>
-       </svg>
-      </button>
-     </div>
-    </section>
-    <section aria-label="Информация о филиале" class="visual" data-i18n-aria="Информация о филиале">
-     <div class="image-stage" id="imageStage">
-      <img alt="" class="photo visible" src="https://placehold.co/1800x1400/464037/e9e2d4/png?text=CHUY+AVENUE"/>
-     </div>
-     <div class="visual-top mono">
-      <span class="visual-label">
-       LINUS / LOCATIONS
-      </span>
-      <span class="visual-index" id="visualIndex">
-       01 — 04
-      </span>
-     </div>
-     <div class="visual-bottom">
-      <div class="branch-heading" id="branchHeading">
-       <div class="branch-address" id="branchAddress">
-       </div>
-       <h2 class="branch-name" data-i18n="проспект Чуй" id="branchName">
-        проспект Чуй
-       </h2>
-      </div>
-      <div class="branch-details" id="branchDetails">
-       <div class="menu-column">
-        <h3 class="detail-title mono" data-i18n="Популярное меню">
-         Популярное меню
-        </h3>
-        <div class="menu-list" id="menuList">
-        </div>
-       </div>
-       <div class="hours-column">
-        <h3 class="detail-title mono" data-i18n="Время работы">
-         Время работы
-        </h3>
-        <div class="hours-list" id="hoursList">
-        </div>
-        <div aria-live="polite" class="hours-status mono" id="hoursStatus">
-        </div>
-       </div>
-      </div>
-     </div>
-    </section>
-   </main>
-  </div>
-  <div aria-live="polite" class="toast" id="toast" role="status">
-  </div>
-  <footer class="linus-footer">
-   <span class="footer-brand mono" data-i18n="© 2026 LINUS · Все права защищены">
-    © 2026 LINUS · Все права защищены
-   </span>
-   <a class="footer-center" href="mailto:support@linus-example.com">
-    support@linus-example.com
-   </a>
-   <button data-i18n="Реквизиты" data-open-legal="" type="button">
-    Реквизиты
-   </button>
-  </footer>
-  <dialog aria-labelledby="linusLegalTitle" class="linus-legal" id="linusLegal">
-   <div class="linus-legal-body">
-    <div class="linus-legal-head">
-     <h2 data-i18n="Правовая информация" id="linusLegalTitle">
-      Правовая информация
-     </h2>
-     <button aria-label="Закрыть" class="close-legal" data-close-legal="" data-i18n-aria="Закрыть" type="button">
-      ×
-     </button>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+      name="viewport"
+    />
+    <meta content="#090a09" name="theme-color" />
+    <title>LINUS — Выбор ресторана</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link href="/src/styles/index.css" rel="stylesheet" />
+    <link href="/src/styles/shared.css" rel="stylesheet" />
+  </head>
+
+  <body data-page="index">
+    <div class="site">
+      <header class="header">
+        <a class="logo" href="index.html"> LINUS </a>
+        <select
+          aria-label="Language / Тил / Язык"
+          class="linus-lang"
+          title="Language / Тил / Язык"
+        >
+          <option value="ky">KY</option>
+          <option value="ru">RU</option>
+          <option value="en">EN</option>
+        </select>
+      </header>
+      <main class="layout">
+        <section
+          aria-label="Выбор филиала"
+          class="selector"
+          data-i18n-aria="Выберите филиал"
+        >
+          <div class="selector-intro">
+            <div class="eyebrow mono">&gt; SELECT_LOCATION</div>
+            <h1 data-i18n="В каком вы сейчас ресторане?">
+              В каком вы сейчас ресторане?
+            </h1>
+            <p
+              class="selector-description"
+              data-i18n="Выберите филиал, чтобы продолжить."
+            >
+              Выберите филиал, чтобы продолжить.
+            </p>
+          </div>
+          <div class="wheel-area">
+            <span aria-hidden="true" class="wheel-marker"> </span>
+            <div
+              aria-label="Список филиалов"
+              class="wheel"
+              data-i18n-aria="Список филиалов"
+              id="wheel"
+              role="listbox"
+              tabindex="0"
+            ></div>
+          </div>
+          <div class="selector-bottom">
+            <div class="wheel-meta mono">
+              <span id="counter"> 01 / 04 </span>
+              <div class="wheel-keys">
+                <span data-i18n="НАВИГАЦИЯ"> НАВИГАЦИЯ </span>
+                <span class="key"> ↑ </span>
+                <span class="key"> ↓ </span>
+              </div>
+            </div>
+            <button class="select-button" id="confirm" type="button">
+              <span data-i18n="Продолжить"> Продолжить </span>
+              <svg
+                aria-hidden="true"
+                fill="none"
+                height="20"
+                stroke="currentColor"
+                stroke-width="1.6"
+                viewbox="0 0 24 24"
+                width="20"
+              >
+                <path d="M4 12h16m-7-7 7 7-7 7"></path>
+              </svg>
+            </button>
+          </div>
+        </section>
+        <section
+          aria-label="Информация о филиале"
+          class="visual"
+          data-i18n-aria="Информация о филиале"
+        >
+          <div class="image-stage" id="imageStage">
+            <img alt="" class="photo visible" src="/linus-1.webp" />
+          </div>
+          <div class="visual-top mono">
+            <span class="visual-label"> LINUS / LOCATIONS </span>
+            <span class="visual-index" id="visualIndex"> 01 — 04 </span>
+          </div>
+          <div class="visual-bottom">
+            <div class="branch-heading" id="branchHeading">
+              <div class="branch-address" id="branchAddress"></div>
+              <h2 class="branch-name" data-i18n="проспект Чуй" id="branchName">
+                проспект Чуй
+              </h2>
+            </div>
+            <div class="branch-details" id="branchDetails">
+              <div class="menu-column">
+                <h3 class="detail-title mono" data-i18n="Популярное меню">
+                  Популярное меню
+                </h3>
+                <div class="menu-list" id="menuList"></div>
+              </div>
+              <div class="hours-column">
+                <h3 class="detail-title mono" data-i18n="Время работы">
+                  Время работы
+                </h3>
+                <div class="hours-list" id="hoursList"></div>
+                <div
+                  aria-live="polite"
+                  class="hours-status mono"
+                  id="hoursStatus"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
     </div>
-    <p data-i18n="Учебный проект — все сведения вымышлены.">
-     Учебный проект — все сведения вымышлены.
-    </p>
-    <p data-i18n="Общество с ограниченной ответственностью «LINUS DEMO» (вымышленное)">
-     Общество с ограниченной ответственностью «LINUS DEMO» (вымышленное)
-    </p>
-    <p data-i18n="ИНН (вымышленный): 00000000000000">
-     ИНН (вымышленный): 00000000000000
-    </p>
-    <p data-i18n="Регистрационный номер (вымышленный): DEMO-KG-2026-001">
-     Регистрационный номер (вымышленный): DEMO-KG-2026-001
-    </p>
-    <p data-i18n="Юридический адрес (вымышленный): Кыргызстан, Бишкек, Учебная, 1">
-     Юридический адрес (вымышленный): Кыргызстан, Бишкек, Учебная, 1
-    </p>
-    <p>
-     <a href="mailto:support@linus-example.com">
-      support@linus-example.com
-     </a>
-    </p>
-    <p data-i18n="Данные заказа хранятся только в этом браузере (localStorage). Оплата и передача на кухню не осуществляются.">
-     Данные заказа хранятся только в этом браузере (localStorage). Оплата и передача на кухню не осуществляются.
-    </p>
-    <p data-i18n="Все цены, часы работы и юридические сведения приведены только для учебной демонстрации.">
-     Все цены, часы работы и юридические сведения приведены только для учебной демонстрации.
-    </p>
-   </div>
-  </dialog>
- </body>
+    <div aria-live="polite" class="toast" id="toast" role="status"></div>
+    <footer class="linus-footer">
+      <span
+        class="footer-brand mono"
+        data-i18n="© 2026 LINUS · Все права защищены"
+      >
+        © 2026 LINUS · Все права защищены
+      </span>
+      <a class="footer-center" href="mailto:support@linus-example.com">
+        support@linus-example.com
+      </a>
+      <button data-i18n="Реквизиты" data-open-legal="" type="button">
+        Реквизиты
+      </button>
+    </footer>
+    <dialog
+      aria-labelledby="linusLegalTitle"
+      class="linus-legal"
+      id="linusLegal"
+    >
+      <div class="linus-legal-body">
+        <div class="linus-legal-head">
+          <h2 data-i18n="Правовая информация" id="linusLegalTitle">
+            Правовая информация
+          </h2>
+          <button
+            aria-label="Закрыть"
+            class="close-legal"
+            data-close-legal=""
+            data-i18n-aria="Закрыть"
+            type="button"
+          >
+            ×
+          </button>
+        </div>
+        <p data-i18n="Учебный проект — все сведения вымышлены.">
+          Учебный проект — все сведения вымышлены.
+        </p>
+        <p
+          data-i18n="Общество с ограниченной ответственностью «LINUS DEMO» (вымышленное)"
+        >
+          Общество с ограниченной ответственностью «LINUS DEMO» (вымышленное)
+        </p>
+        <p data-i18n="ИНН (вымышленный): 00000000000000">
+          ИНН (вымышленный): 00000000000000
+        </p>
+        <p data-i18n="Регистрационный номер (вымышленный): DEMO-KG-2026-001">
+          Регистрационный номер (вымышленный): DEMO-KG-2026-001
+        </p>
+        <p
+          data-i18n="Юридический адрес (вымышленный): Кыргызстан, Бишкек, Учебная, 1"
+        >
+          Юридический адрес (вымышленный): Кыргызстан, Бишкек, Учебная, 1
+        </p>
+        <p>
+          <a href="mailto:support@linus-example.com">
+            support@linus-example.com
+          </a>
+        </p>
+        <p
+          data-i18n="Данные заказа хранятся только в этом браузере (localStorage). Оплата и передача на кухню не осуществляются."
+        >
+          Данные заказа хранятся только в этом браузере (localStorage). Оплата и
+          передача на кухню не осуществляются.
+        </p>
+        <p
+          data-i18n="Все цены, часы работы и юридические сведения приведены только для учебной демонстрации."
+        >
+          Все цены, часы работы и юридические сведения приведены только для
+          учебной демонстрации.
+        </p>
+      </div>
+    </dialog>
+    <script type="module" src="/src/pages/index.js"></script>
+  </body>
 </html>
