@@ -1,6 +1,17 @@
 <!doctype html>
 <html lang="ru">
   <head>
+    <script>
+      (() => {
+        try {
+          const entry = JSON.parse(sessionStorage.getItem("linus.route-wipe.v1") || "null");
+          if (entry && entry.path === location.pathname && Math.abs(Date.now() - entry.at) < 20000) {
+            document.documentElement.classList.add("linus-route-pending");
+            document.documentElement.dataset.linusRouteTitle = entry.title;
+          }
+        } catch {}
+      })();
+    </script>
     <meta charset="utf-8" />
     <meta
       content="width=device-width,initial-scale=1,viewport-fit=cover"

@@ -4,6 +4,7 @@ import { animate, prefersReducedMotion } from "../core/motion.js";
 import { branches as restaurantBranches } from "../data/branches.js";
 import { menuData } from "../data/menu.js";
 import { initSite } from "../core/site.js";
+import { navigateWithTransition } from "../core/page-transitions.js";
 
 initSite();
 const T = (text) => I18n.t(text);
@@ -336,10 +337,12 @@ function rebuildDome() {
   const fragment = document.createDocumentFragment();
 
   for (let c = 0; c < dome.segments; c++) {
-    const longitude = (c - Math.floor(dome.segments / 2)) * angleStep;
-
     for (let r = 0; r < 5; r++) {
-      const latitude = (r - 2 + (c % 2 ? 0.5 : 0)) * angleStep;
+      // Смещение каждой второй горизонтальной строки на полплитки.
+      const rowShift = r % 2 === 0 ? 0 : 0.5;
+      const longitude =
+        (c - Math.floor(dome.segments / 2) + rowShift) * angleStep;
+      const latitude = (r - 2) * angleStep;
       const tileWidth =
         horizontalTileSize * Math.cos((latitude * Math.PI) / 180);
       const idx =
@@ -1128,7 +1131,7 @@ async function commitOrder() {
     await new Promise((resolve) =>
       setTimeout(resolve, reduced.matches ? 30 : 450),
     );
-    window.location.href = `order.html?id=${encodeURIComponent(id)}`;
+    void navigateWithTransition(`order.html?id=${encodeURIComponent(id)}`);
   } catch (error) {
     slideState.busy = false;
     slideTrack.dataset.phase = "idle";

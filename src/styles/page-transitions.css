@@ -1,0 +1,86 @@
+/* Page wipe theme intentionally matches the restaurant's dark-gold palette. */
+.linus-route-wipe {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483646;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  isolation: isolate;
+  pointer-events: all;
+  background: #10130f;
+  color: #f3efe5;
+  will-change: transform;
+  box-shadow: 0 12px 60px rgba(0, 0, 0, 0.25);
+}
+
+.linus-route-wipe::before {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  border: 1px solid rgba(202, 173, 112, 0.15);
+  pointer-events: none;
+}
+
+.linus-route-wipe__inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(17px, 3vh, 30px);
+  padding: 36px 22px;
+  text-align: center;
+}
+
+.linus-route-wipe__caption {
+  color: #c9ad70;
+  font: 500 11px "DM Mono", monospace;
+  letter-spacing: .26em;
+}
+
+.linus-route-wipe__title {
+  max-width: 95vw;
+  color: #f3efe5;
+  font: 600 clamp(29px, 6vw, 76px)/1.13 "Manrope", sans-serif;
+  letter-spacing: -.055em;
+  text-wrap: balance;
+}
+
+.linus-route-wipe__rule {
+  display: block;
+  width: 70px;
+  height: 1px;
+  background: #c9ad70;
+}
+
+/* Draw a full-screen placeholder before the destination page's JS runs. */
+html.linus-route-pending {
+  background: #10130f;
+}
+
+html.linus-route-pending body {
+  visibility: hidden !important;
+}
+
+html.linus-route-pending::after {
+  content: attr(data-linus-route-title);
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647;
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  padding: 36px 22px;
+  text-align: center;
+  background: #10130f;
+  color: #f3efe5;
+  font: 600 clamp(29px, 6vw, 76px)/1.13 "Manrope", sans-serif;
+  letter-spacing: -.055em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .linus-route-wipe { will-change: auto; }
+}

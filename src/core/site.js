@@ -1,4 +1,7 @@
+import { initPageTransitions } from "./page-transitions.js";
+
 export function initSite() {
+  initPageTransitions();
   const dialog = document.querySelector("#linusLegal");
 
   document.querySelectorAll("[data-open-legal]").forEach((button) => {

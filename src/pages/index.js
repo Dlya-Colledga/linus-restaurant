@@ -2,6 +2,7 @@ import { animate, fadeOut, fadeIn } from "../core/motion.js";
 import { branches as restaurantBranches } from "../data/branches.js";
 import { I18n } from "../core/i18n.js";
 import { initSite } from "../core/site.js";
+import { navigateWithTransition } from "../core/page-transitions.js";
 
 initSite();
 const $ = (selector) => document.querySelector(selector);
@@ -418,7 +419,7 @@ $("#confirm").addEventListener("click", () => {
     localStorage.setItem("linus.selectedRestaurant", branch.id);
   } catch {}
 
-  window.location.href = `menu.html?location=${encodeURIComponent(branch.id)}`;
+  void navigateWithTransition(`menu.html?location=${encodeURIComponent(branch.id)}`);
 });
 I18n.subscribe(() => {
   elements.forEach((element, i) => {
