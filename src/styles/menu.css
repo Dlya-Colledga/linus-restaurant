@@ -1387,7 +1387,6 @@ a:focus-visible {
   }
 }
 
-
 .cart-link {
   position: fixed;
   right: calc(28px + env(safe-area-inset-right, 0px));
@@ -1415,10 +1414,10 @@ a:focus-visible {
   backdrop-filter: blur(16px);
 
   transition:
-  transform 0.25s ease,
-  background 0.25s ease,
-  border-color 0.25s ease,
-  box-shadow 0.25s ease;
+    transform 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .cart-link:hover {
@@ -1472,7 +1471,6 @@ a:focus-visible {
   }
 }
 
-
 .cart-link {
   right: calc(28px + env(safe-area-inset-right, 0px));
   bottom: 112px;
@@ -1483,4 +1481,30 @@ a:focus-visible {
     right: calc(16px + env(safe-area-inset-right, 0px));
     bottom: calc(114px + env(safe-area-inset-bottom, 0px));
   }
+}
+
+.dish-overlay[hidden] {
+  display: none !important;
+}
+
+.dish-morph-cover {
+  display: none !important;
+}
+
+.dish-panel {
+  transform-origin: center center;
+  will-change: transform, opacity;
+}
+
+.dish-panel .close {
+  opacity: 1;
+}
+
+.cart-dialog::backdrop {
+  opacity: 1;
+  transition: opacity 420ms ease;
+}
+
+.cart-dialog.cart-leaving::backdrop {
+  opacity: 0;
 }

@@ -652,84 +652,64 @@ async function openDish(i, source) {
     gallery.classList.contains("changing")
   )
     return;
+
   modalPhase = "opening";
+
   stopInertia();
   clearTimeout(switchTimer);
   clearTimeout(sphereChangeTimer);
+
   modalOldFocus = document.activeElement;
   activeTile = source;
+
   fillDish(i);
-
-  const sourceRect = source.getBoundingClientRect();
-
-  if (sourceRect.width < 1 || sourceRect.height < 1) {
-    modalPhase = "idle";
-
-    return;
-  }
 
   dishOverlay.hidden = false;
   dishPanel.classList.add("ready", "content-visible");
-  setSourceHidden(source, true);
-  setMorphImage(source);
 
-  const panelRect = dishPanel.getBoundingClientRect();
-  const origin = cardGeometry(sourceRect, panelRect);
-  const transform = cardTransform(origin);
-
-  dishPanel.style.transform = transform;
+  dishPanel.style.opacity = "";
+  dishPanel.style.transform = "";
+  dishCopy.style.opacity = "";
+  dishCopy.style.transform = "";
+  closeButton.style.opacity = "";
   backdrop.style.opacity = "0";
-  morphCover.style.opacity = "1";
-  dishCopy.style.opacity = "0";
-  closeButton.style.opacity = "0";
 
-  const duration = prefersReducedMotion.matches ? 0 : 880;
-  const flight = animate(
-    dishPanel,
-    [
-      { transform, borderRadius: "12px", boxShadow: "0 4px 20px #0004" },
+  const reduce = prefersReducedMotion.matches;
+
+  await Promise.all([
+    animate(
+      dishPanel,
+      [
+        {
+          opacity: 0,
+          transform: "translate3d(0,18px,0) scale(.965)",
+        },
+        {
+          opacity: 1,
+          transform: "translate3d(0,0,0) scale(1)",
+        },
+      ],
       {
-        transform: "translate3d(0,0,0) scale(1,1)",
-        borderRadius: "4px",
-        boxShadow: "0 30px 100px #0009",
+        duration: reduce ? 0 : 500,
+        easing: "cubic-bezier(.22,1,.36,1)",
       },
-    ],
-    { duration, easing: "cubic-bezier(.22,1,.36,1)" },
-  );
+    ),
 
-  const shade = animate(backdrop, [{ opacity: 0 }, { opacity: 1 }], {
-    duration: 560,
-  });
+    animate(backdrop, [{ opacity: 0 }, { opacity: 1 }], {
+      duration: reduce ? 0 : 400,
+    }),
 
-  const uncover = animate(morphCover, [{ opacity: 1 }, { opacity: 0 }], {
-    duration: 430,
-    delay: duration * 0.53,
-    easing: "ease-out",
-  });
+    animate(dishCopy, [{ opacity: 0 }, { opacity: 1 }], {
+      duration: reduce ? 0 : 360,
+      delay: reduce ? 0 : 80,
+    }),
 
-  const content = animate(
-    dishCopy,
-    [
-      { opacity: 0, transform: "translate3d(16px,12px,0)" },
-      { opacity: 1, transform: "translate3d(0,0,0)" },
-    ],
-    {
-      duration: 450,
-      delay: duration * 0.55,
-      easing: "cubic-bezier(.16,1,.3,1)",
-    },
-  );
+    animate(closeButton, [{ opacity: 0 }, { opacity: 1 }], {
+      duration: reduce ? 0 : 280,
+      delay: reduce ? 0 : 100,
+    }),
+  ]);
 
-  const controls = animate(
-    closeButton,
-    [
-      { opacity: 0, transform: "scale(.85)" },
-      { opacity: 1, transform: "scale(1)" },
-    ],
-    { duration: 260, delay: duration * 0.73 },
-  );
-
-  await Promise.all([flight, shade, uncover, content, controls]);
   dishPanel.style.transform = "";
   modalPhase = "open";
   closeButton.focus({ preventScroll: true });
@@ -737,51 +717,49 @@ async function openDish(i, source) {
 
 async function closeDish() {
   if (modalPhase !== "open") return;
-  modalPhase = "closing";
-  const source = activeTile;
-  const target = source?.isConnected ? source.getBoundingClientRect() : null;
-  const panelRect = dishPanel.getBoundingClientRect();
-  const transform = target
-    ? cardTransform(cardGeometry(target, panelRect))
-    : "scale(.65)";
 
-  await Promise.all([
-    animate(morphCover, [{ opacity: 0 }, { opacity: 1 }], {
-      duration: 270,
-      easing: "ease-in-out",
-    }),
-    animate(
-      dishCopy,
-      [
-        { opacity: 1, transform: "translate3d(0,0,0)" },
-        { opacity: 0, transform: "translate3d(12px,10px,0)" },
-      ],
-      { duration: 240 },
-    ),
-    animate(closeButton, [{ opacity: 1 }, { opacity: 0 }], { duration: 200 }),
-  ]);
+  modalPhase = "closing";
+
+  const reduce = prefersReducedMotion.matches;
 
   await Promise.all([
     animate(
       dishPanel,
       [
-        { transform: "translate3d(0,0,0) scale(1,1)", borderRadius: "4px" },
-        { transform, borderRadius: "12px" },
+        {
+          opacity: 1,
+          transform: "translate3d(0,0,0) scale(1)",
+        },
+        {
+          opacity: 0,
+          transform: "translate3d(0,14px,0) scale(.97)",
+        },
       ],
-      { duration: 680, easing: "cubic-bezier(.7,0,.2,1)" },
+      {
+        duration: reduce ? 0 : 300,
+        easing: "cubic-bezier(.4,0,1,1)",
+      },
     ),
-    animate(backdrop, [{ opacity: 1 }, { opacity: 0 }], { duration: 580 }),
+
+    animate(backdrop, [{ opacity: 1 }, { opacity: 0 }], {
+      duration: reduce ? 0 : 280,
+    }),
   ]);
 
   dishOverlay.hidden = true;
   dishPanel.classList.remove("ready", "content-visible");
+
+  dishPanel.style.opacity = "";
   dishPanel.style.transform = "";
+  dishCopy.style.opacity = "";
+  dishCopy.style.transform = "";
+  closeButton.style.opacity = "";
   backdrop.style.opacity = "0";
-  morphCover.style.opacity = "0";
-  setSourceHidden(source, false);
+
   activeTile = null;
   activeDish = null;
   modalPhase = "idle";
+
   if (modalOldFocus instanceof HTMLElement && modalOldFocus.isConnected) {
     modalOldFocus.focus({ preventScroll: true });
   }
@@ -935,6 +913,12 @@ const slideState = {
   drag: null,
   raf: 0,
 };
+
+cartDialog.addEventListener("cancel", (event) => {
+  if (slideState.busy) {
+    event.preventDefault();
+  }
+});
 
 function slideTravel() {
   return Math.max(0, slideTrack.clientWidth - slideThumb.offsetWidth - 8);
@@ -1126,11 +1110,43 @@ async function commitOrder() {
     await new Promise((resolve) =>
       setTimeout(resolve, reduced.matches ? 50 : 480),
     );
+
     slideTrack.dataset.phase = "done";
     slideLabel.textContent = T("✓ ЗАКАЗ СОЗДАН");
+
     await new Promise((resolve) =>
-      setTimeout(resolve, reduced.matches ? 30 : 450),
+      setTimeout(resolve, reduced.matches ? 30 : 650),
     );
+
+    cartDialog.classList.add("cart-leaving");
+
+    await animate(
+      cartDialog,
+      [
+        {
+          opacity: 1,
+          transform: "translate3d(0,0,0) scale(1)",
+          filter: "blur(0px)",
+        },
+        {
+          opacity: 0,
+          transform: "translate3d(0,24px,0) scale(.94)",
+          filter: "blur(5px)",
+        },
+      ],
+      {
+        duration: reduced.matches ? 0 : 420,
+        easing: "cubic-bezier(.4,0,1,1)",
+      },
+    );
+
+    cartDialog.close();
+    cartDialog.classList.remove("cart-leaving");
+
+    cartDialog.style.opacity = "";
+    cartDialog.style.transform = "";
+    cartDialog.style.filter = "";
+
     void navigateWithTransition(`order.html?id=${encodeURIComponent(id)}`);
   } catch (error) {
     slideState.busy = false;
